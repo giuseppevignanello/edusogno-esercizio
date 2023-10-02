@@ -38,7 +38,6 @@ body {
 /* #region header */
 .app_header {
   height: 80px;
-  border: 1px dashed red;
 }
 
 .logo {
