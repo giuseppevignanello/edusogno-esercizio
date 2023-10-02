@@ -18,16 +18,27 @@ class User
 
     public function login()
     {
-        $query = "SELECT * FROM utenti WHERE email = ? AND password = ?";
+        //email check
+        $query = "SELECT * FROM utenti WHERE email = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ss", $this->email, $this->password);
+        $stmt->bind_param("s", $this->email);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->num_rows === 1) {
+        //if there are not result
+        if ($result->num_rows === 0) {
+            return "email_not_found";
+        }
+
+        $user_data = $result->fetch_assoc();
+
+
+        //check the password
+        // If the password had been hashed I would have used password_verify 
+        if ($this->password = $user_data['password']) {
             return "success";
         } else {
-            return "failure";
+            return "password_mismatch";
         }
     }
 }

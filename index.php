@@ -1,3 +1,15 @@
+<?php
+//This could be in a partials
+session_start();
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+
+    //remove message
+    unset($_SESSION['message']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/style.css">
-    <title>Edusogno - Login</title>
+    <title>Edusogno-Login</title>
 </head>
 
 <body>
@@ -16,12 +28,17 @@
         </div>
     </header>
 
+    <div>
+        <?php echo $message ?>
+    </div>
+
     <main>
         <div class="login_box">
-            <form action="" method="post"></form>
-            <input type="mail">
-            <input type="password">
-            <button type="submit">Submit</button>
+            <form action="auth.php" method="post">
+                <input type="mail" id="email_login" name="email_login" required>
+                <input type="password" id="password_login" name="password_login" required>
+                <button type="submit">Submit</button>
+            </form>
         </div>
 
         <hr>

@@ -17,7 +17,7 @@ if ($result) {
         echo "Password: " . $row['password'] . "<br>";
     }
 } else {
-    echo "Errore nella query: " . $database->getConnection()->error;
+    echo "Query Error: " . $database->getConnection()->error;
 }
 $database->getConnection()->close();
 
@@ -31,5 +31,5 @@ $password = "provaprova";
 $user = new User($email, $password);
 $result = $user->login();
 
-// Visualizza il risultato del login
+// show the login result 
 echo $result;
