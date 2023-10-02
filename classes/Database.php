@@ -20,6 +20,9 @@ class Database
         $this->username = $dbConfig['dbUsername'];
         $this->password = $dbConfig['dbPassword'];
         $this->name = $dbConfig['dbName'];
+
+        //establish the db connection
+        $this->connection();
     }
 
     public function connection()
