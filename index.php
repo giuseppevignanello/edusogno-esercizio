@@ -18,6 +18,9 @@ if (isset($_SESSION['message'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,700&display=swap" rel="stylesheet">
     <title>Edusogno-Login</title>
 </head>
 
@@ -33,16 +36,18 @@ if (isset($_SESSION['message'])) {
     </div>
 
     <main>
-        <div class="login_box">
-            <form action="auth.php" method="post">
-                <input type="mail" id="email_login" name="email_login" required>
-                <input type="password" id="password_login" name="password_login" required>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <h1 class="login_title text_bold">Hai già un account?</h1>
+        <div class="login_box bg_white">
+            <form action="auth.php" method="post" class="d_flex flex_column px_2">
+                <label class=" text_bold login_label" for="email_login">Inserisci l'e-mail</label>
+                <input class="login_input" type="mail" id="email_login" name="email_login" placeholder="name@example.com " required>
 
-        <hr>
-        <a href="register.php">Register</a>
+                <label class="text_bold login_label" for="password_login">Inserisci la password</label>
+                <input class="login_input" type="password" id="password_login" name="password_login" placeholder="Scrivila qui" required>
+                <button type="submit" class="input_submit">ACCEDI</button>
+            </form>
+            <p class="box_footer">Non hai ancora un profilo? <a href="register.php">Register</a></p>
+        </div>
         <a href="Tester.php">tester</a>
     </main>
 </body>
