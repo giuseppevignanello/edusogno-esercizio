@@ -26,6 +26,7 @@
 
         <hr>
         <a href="register.php">Register</a>
+        <a href="Tester.php">tester</a>
     </main>
 </body>
 
