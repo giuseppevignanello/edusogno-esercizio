@@ -35,7 +35,7 @@ class User
 
         //check the password
         // If the password had been hashed I would have used password_verify 
-        if ($this->password = $user_data['password']) {
+        if ($this->password == $user_data['password']) {
             return "success";
         } else {
             return "password_mismatch";
