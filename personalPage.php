@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once "./classes/Event.php";
 require_once "./classes/User.php";
 require_once "./classes/Database.php";
 //This could be in a partials
@@ -14,10 +13,9 @@ if (isset($_SESSION['message'])) {
 
 $user = new User($_SESSION['user_email'], $_SESSION['user_password']);
 $database = new Database();
-$event = new Event($database, $user);
 
 $userEmail = $user->getMail();
-$events = $event->getUserEvents($userEmail);
+$events = $user->getUserEvents($userEmail);
 
 $userName = $user->getName();
 $userSurname = $user->getSurname();

@@ -34,9 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $to = $userEmail;
             $subject = "Reimposta Password";
             $reset_link = "http://localhost/edusogno-esercizio/reset_password.php?token=" . $token;
-            $headers = "From: peppe.vignanello@gmail.com";
+            // $headers = 'From: peppe.vignanello@gmail.com' . "\r\n" .
+            //     'Reply-To: peppe.vignanello@gmail.com' . "\r\n" .
+            //     'X-Mailer: PHP/' . phpversion();
             $message = "Clicca sul seguente link per reimpostare la tua password: $reset_link";
-            mail($to, $subject, $message, $headers);
+            mail($to, $subject, $message);
 
             $_SESSION['message'] = "è stata inviata una mail al tuo indirizzo";
             header("Location: index.php");
