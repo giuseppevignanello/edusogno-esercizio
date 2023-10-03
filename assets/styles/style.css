@@ -33,11 +33,16 @@ body {
   align-items: center;
 }
 
+.justify_content_center {
+  justify-content: center;
+}
+
 /* #endregion utilities */
 
 /* #region header */
 .app_header {
   height: 80px;
+  margin-bottom: 3rem;
 }
 
 .logo {
@@ -104,3 +109,20 @@ body {
 }
 
 /* #endregion main */
+.event_text {
+  padding: 1rem;
+}
+
+.hour_date {
+  color: #dddddd;
+}
+
+.event_button {
+  border: none;
+  padding: 1rem;
+  color: white;
+  background: #0057ff;
+  border-radius: 10px;
+  width: 80%;
+  margin-bottom: 1rem;
+}

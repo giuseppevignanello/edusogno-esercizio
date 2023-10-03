@@ -23,12 +23,19 @@ $events = $event->getUserEvents($userEmail);
 //HTML Header
 include "./partials/header.php";
 ?>
-Dashboard
 
 <?php
 foreach ($events as $event_item) {
-    echo ($event_item->nome_evento);
-    echo ($event_item->data_evento);
+
+    echo '<div class="box bg_white">';
+    echo '<div class="event_text">';
+    echo '<h2>' . $event_item->nome_evento . '</h2>';
+    echo '<span class="hour_date">' . $event_item->data_evento . '</span>';
+    echo '</div>';
+    echo '<div class="d_flex justify_content_center">';
+    echo '<button class="event_button">JOIN</button>';
+    echo '</div>';
+    echo '</div>';
 }
 ?>
 </body>
