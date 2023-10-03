@@ -72,4 +72,36 @@ class User
     {
         return $this->email;
     }
+
+    public function getName()
+    {
+        $query = "SELECT nome FROM utenti WHERE email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            return $row['nome'];
+        } else {
+            return null;
+        }
+    }
+
+    public function getSurname()
+    {
+        $query = "SELECT cognome FROM utenti WHERE email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            return $row['cognome'];
+        } else {
+            return null;
+        }
+    }
 }

@@ -19,11 +19,14 @@ $event = new Event($database, $user);
 $userEmail = $user->getMail();
 $events = $event->getUserEvents($userEmail);
 
+$userName = $user->getName();
+$userSurname = $user->getSurname();
+
 
 //HTML Header
 include "./partials/header.php";
 ?>
-
+<h1 class="title text_bold">Ciao <?php echo ($userName . ' ' . $userSurname) ?> ecco i tuoi eventi</h1>
 <?php
 foreach ($events as $event_item) {
 
