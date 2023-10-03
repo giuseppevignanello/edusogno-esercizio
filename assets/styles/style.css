@@ -37,6 +37,33 @@ body {
   justify-content: center;
 }
 
+.justify_content_around {
+  justify-content: space-around;
+}
+
+.btn {
+  border: none;
+  padding: 1rem;
+  color: white;
+  border-radius: 10px;
+}
+
+.mb_1 {
+  margin-bottom: 1rem;
+}
+
+.flex_wrap {
+  flex-wrap: wrap;
+}
+
+.bg_delete {
+  background-color: red;
+}
+
+.bg_edit {
+  background-color: #0057ff;
+}
+
 /* #endregion utilities */
 
 /* #region header */
@@ -130,3 +157,11 @@ body {
 }
 
 /* #endregion show_event */
+
+.event {
+  width: 25%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
