@@ -10,24 +10,26 @@ if (isset($_SESSION['message'])) {
 include "./partials/header.php";
 ?>
 <main>
-    <div class="register_box">
-        <form action="register_auth.php" method="post">
-            <label for="name_input_register">Inserisci il
+    <h1 class="title text_bold">Crea il tuo account</h1>
+    <div class="box bg_white">
+        <form action="register_auth.php" method="post" class="d_flex flex_column px_2">
+            <label for="name_input_register" class=" text_bold label">Inserisci il
                 nome</label>
-            <input id="name_input_register" type="text" name="name_register">
-            <label for="surname_input_register">Inserisci il
+            <input class="input" id="name_input_register" type="text" name="name_register">
+            <label for="surname_input_register" class=" text_bold label">Inserisci il
                 cognome</label>
-            <input id="surname_input_register" type="text" name="surname_register">
-            <label for="mail_input_register">Inserisci la
+            <input class="input" id="surname_input_register" type="text" name="surname_register">
+            <label for="mail_input_register" class=" text_bold label">Inserisci la
                 mail</label>
-            <input id="mail_input_register" type="mail" name="email_register">
-            <label for="password_input_register">Inserisci
+            <input class="input" id="mail_input_register" type="mail" name="email_register">
+            <label for="password_input_register" class=" text_bold label">Inserisci
                 la
                 password</label>
-            <input id="password_input_register" type="password" name="password_register">
-            <button type="submit">Submit</button>
+            <input class="input" id="password_input_register" type="password" name="password_register">
+            <button type="submit" class="input_submit">REGISTRATIt</button>
 
         </form>
+        <p class="box_footer">Hai già un account? <a href="index.php">Accedi</a></p>
 
     </div>
 </main>
