@@ -104,4 +104,21 @@ class User
             return null;
         }
     }
+
+    public function checkIfEmailExists()
+    {
+
+        $query = "SELECT COUNT(*) as count FROM utenti WHERE email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if ($row['count'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

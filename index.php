@@ -23,7 +23,8 @@ include "./partials/header.php";
             <input class="input" type="password" id="password_login" name="password_login" placeholder="Scrivila qui" required>
             <button type="submit" class="input_submit">ACCEDI</button>
         </form>
-        <p class="box_footer">Non hai ancora un profilo? <a href="register.php">Registrati</a></p>
+        <p class="box_footer">Non hai ancora un profilo? <a href="register.php">Registrati</a> <br>
+            Hai dimenticato la password? <a href="password_reset_form.php">Reimposta password</a></p>
     </div>
 </main>
 </body>

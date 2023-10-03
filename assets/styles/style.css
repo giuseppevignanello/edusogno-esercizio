@@ -100,11 +100,11 @@ body {
   color: white;
   background: #0057ff;
   border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .box_footer {
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 

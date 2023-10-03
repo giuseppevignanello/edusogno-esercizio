@@ -22,7 +22,6 @@ $events = $event->getUserEvents($userEmail);
 $userName = $user->getName();
 $userSurname = $user->getSurname();
 
-
 //HTML Header
 include "./partials/header.php";
 ?>
