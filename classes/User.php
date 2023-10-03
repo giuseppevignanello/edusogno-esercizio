@@ -42,6 +42,32 @@ class User
         }
     }
 
+    public function register($name, $surname)
+    {
+
+        //check if the email is already used
+        $query = "SELECT * FROM utenti WHERE email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            // Insert user data in db
+            $query = "INSERT INTO utenti (nome, cognome, email, password) VALUES (?, ?, ?, ?)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bind_param("ssss", $name, $surname, $this->email, $this->password);
+
+            if ($stmt->execute()) {
+                return "success";
+            } else {
+                return "registration_error";
+            }
+        } else {
+            return "email_already_exists";
+        }
+    }
+
     public function getMail()
     {
         return $this->email;

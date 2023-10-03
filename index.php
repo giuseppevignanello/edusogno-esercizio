@@ -1,7 +1,8 @@
 <?php
 //to do: fix password bug 
-//This could be in a partials
+
 session_start();
+//This could be in a partials
 if (isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
 
@@ -15,7 +16,7 @@ include "./partials/header.php";
 <main>
     <h1 class="login_title text_bold">Hai già un account?</h1>
     <div class="login_box bg_white">
-        <form action="auth.php" method="post" class="d_flex flex_column px_2">
+        <form action="login_auth.php" method="post" class="d_flex flex_column px_2">
             <label class=" text_bold login_label" for="email_login">Inserisci l'e-mail</label>
             <input class="login_input" type="mail" id="email_login" name="email_login" placeholder="name@example.com " required>
 
