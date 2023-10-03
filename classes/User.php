@@ -8,9 +8,9 @@ class User
     private $database;
     private $connection;
 
-    public function __construct($mail, $password)
+    public function __construct($email, $password)
     {
-        $this->email = $mail;
+        $this->email = $email;
         $this->password = $password;
         $this->database = new Database();
         $this->connection = $this->database->getConnection();
@@ -40,5 +40,10 @@ class User
         } else {
             return "password_mismatch";
         }
+    }
+
+    public function getMail()
+    {
+        return $this->email;
     }
 }

@@ -7,6 +7,8 @@ if (isset($_POST['email_login']) && isset($_POST['password_login'])) {
     //take the user data
     $email = $_POST['email_login'];
     $password = $_POST['password_login'];
+    $_SESSION['user_email'] = $email;
+    $_SESSION['user_password'] = $password;
 
     //initialize a user object
     $user = new User($email, $password);
@@ -14,7 +16,7 @@ if (isset($_POST['email_login']) && isset($_POST['password_login'])) {
 
     if ($login == "success") {
         $_SESSION['message'] = "Login effettuato con successo!";
-        header("Location: dashboard.php");
+        header("Location: personalPage.php");
     } elseif ($login == "email_not_found") {
         $_SESSION['message'] = "Email non trovata!";
         header("Location: index.php");

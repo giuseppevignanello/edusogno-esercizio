@@ -1,6 +1,17 @@
-<?php include "./partials/header.php";
+<?php
 //to do: fix password bug 
+//This could be in a partials
+session_start();
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+
+    //remove message
+    unset($_SESSION['message']);
+}
+include "./partials/header.php";
 ?>
+
+
 <main>
     <h1 class="login_title text_bold">Hai già un account?</h1>
     <div class="login_box bg_white">
