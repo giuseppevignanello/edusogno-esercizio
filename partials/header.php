@@ -21,6 +21,8 @@
         </div>
     </header>
 
-    <div>
-        <?php echo $message ?>
-    </div>
+    <?php if (!empty($message)) : ?>
+    <span id="message_header" class="message">
+        <?php echo $message; ?>
+    </span>
+    <?php endif; ?>

@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //modal logic
+
   const deleteButtons = document.querySelectorAll(".delete");
 
   deleteButtons.forEach(function (button) {
@@ -18,4 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  //message background color logic
+  const messageElement = document.getElementById("message_header");
+  const messageContent = messageElement.textContent.trim();
+
+  if (messageContent.includes("!")) {
+    messageElement.style.backgroundColor = "green";
+  } else if (messageContent.includes("...")) {
+    messageElement.style.backgroundColor = "red";
+  }
 });

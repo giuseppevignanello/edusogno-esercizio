@@ -20,14 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = "Registrazione effettuata con successo!";
             header("Location: views/personalPage.php");
         } elseif ($registation == "email_already_exists") {
-            $_SESSION['message'] = "L'indirizzo mail è già utilizzato";
+            $_SESSION['message'] = "L'indirizzo mail è già utilizzato...";
             header("Location: views/register.php");
         } elseif ($registation == "registration_error") {
-            $_SESSION['message'] = "C'è stato un'errore durante la registrazione, riprova più tardi";
+            $_SESSION['message'] = "C'è stato un'errore durante la registrazione, riprova più tardi...";
             header("Location: views/register.php");
         }
     } else {
-        $_SESSION['message'] = "Dati mancanti!";
+        $_SESSION['message'] = "Dati mancanti...";
         header("Location: views/register.php");
     }
 }

@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = "Login effettuato con successo!";
             header("Location: ../views/personalPage.php");
         } elseif ($login == "email_not_found") {
-            $_SESSION['message'] = "Email non trovata!";
+            $_SESSION['message'] = "Email non trovata...";
             header("Location: ../views/login.php");
         } elseif ($login == "password_mismatch") {
-            $_SESSION['message'] = "Password errata";
+            $_SESSION['message'] = "Password errata...";
             header("Location: ../views/login.php");
         }
     } else {
-        $_SESSION['message'] = "Dati mancanti!";
+        $_SESSION['message'] = "Dati mancanti...";
         header("Location: ../views/login.php");
     }
 }
