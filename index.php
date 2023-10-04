@@ -1,5 +1,5 @@
 <?php
-//to do: fix password bug 
+//to do: input validation js ,responsive, show password on login and registe, admin auth, bonus
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {

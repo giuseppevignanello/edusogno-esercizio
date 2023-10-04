@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['token']) && !empty($_POST['new_password'])) {
         $token = $_POST['token'];
         $newPassword = $_POST['new_password'];
-
+        $newHashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
         // db connection
         $database = new Database();
         $mysqli = $database->getConnection();
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $update_query = "UPDATE utenti SET password = ? WHERE email = ?";
             $stmt_update = $mysqli->prepare($update_query);
-            $stmt_update->bind_param("ss", $newPassword, $userEmail);
+            $stmt_update->bind_param("ss", $newHashedPassword, $userEmail);
 
             if ($stmt_update->execute()) {
                 // delete the token 

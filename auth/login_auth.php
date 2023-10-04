@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email_login'];
         $password = $_POST['password_login'];
         $_SESSION['user_email'] = $email;
-        $_SESSION['user_password'] = $password;
+        //$_SESSION['user_password'] = $password;
 
         //initialize a user object
         $user = new User($email, $password);

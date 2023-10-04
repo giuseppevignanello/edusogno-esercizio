@@ -31,11 +31,12 @@ class User
         }
 
         $user_data = $result->fetch_assoc();
-
+        var_dump($this->password);
+        var_dump($user_data['password']);
 
         //check the password
         // If the password had been hashed I would have used password_verify 
-        if ($this->password == $user_data['password']) {
+        if (password_verify($this->password, $user_data['password'])) {
             return "success";
         } else {
             return "password_mismatch";
