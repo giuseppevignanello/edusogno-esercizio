@@ -1,7 +1,17 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+// require './vendor/phpmailer/src/Exception.php';
+// require './vendor/phpmailer/src/PHPMailer.php';
+// require './vendor/phpmailer/src/SMTP.php';
+
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+require 'vendor/autoload.php';
 require_once('./classes/User.php');
 require_once('./classes/Database.php');
 session_start();
@@ -30,18 +40,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("ss", $userEmail, $token);
             $stmt->execute();
 
-            // Send the mail for the password reset
-            $to = $userEmail;
-            $subject = "Reimposta Password";
-            $reset_link = "http://localhost/edusogno-esercizio/reset_password.php?token=" . $token;
-            // $headers = 'From: peppe.vignanello@gmail.com' . "\r\n" .
-            //     'Reply-To: peppe.vignanello@gmail.com' . "\r\n" .
-            //     'X-Mailer: PHP/' . phpversion();
-            $message = "Clicca sul seguente link per reimpostare la tua password: $reset_link";
-            mail($to, $subject, $message);
+            $env = parse_ini_file('.env');
+            $SMTP_USER = $env['SMTP_USER'];
+            $SMTP_PASS = $env['SMTP_PASS'];
 
-            $_SESSION['message'] = "è stata inviata una mail al tuo indirizzo";
-            header("Location: index.php");
+            // Send the mail for the password reset
+
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                $mail->SMTPDebug = 2;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Username = $SMTP_USER;
+                $mail->Password =  $SMTP_PASS;                 //Set the SMTP server to send through
+                $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+                $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+                $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail->setFrom('from@example.com', 'Mailer');
+                $mail->addAddress($userEmail);     //Add a recipient
+
+
+                //Content                                 //Set email format to HTML
+                $mail->Subject = 'Recupero Password';
+                $reset_link = "http://localhost/edusogno-esercizio/reset_password.php?token=" . $token;
+                $message = "Clicca sul seguente link per reimpostare la tua password: $reset_link";
+                $mail->Body    = $message;
+
+                $mail->send();
+                $_SESSION['message'] = "Il codice di recupero è stato inviato al tuo indirizzo mail";
+                header("Location: index.php");
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         } else {
             $_SESSION['message'] = "L'indirizzo email non è registrato";
             header("Location: password_reset_form.php");
