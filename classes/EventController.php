@@ -39,7 +39,7 @@ class EventController
     public function storeEvent(Event $event)
     {
         $conn = $this->database->getConnection();
-
+        var_dump($event);
         $eventName = $event->getEventName();
         $eventDateTime = $event->getEventDate();
         $eventAttendees = $event->getAttendees();
