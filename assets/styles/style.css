@@ -17,6 +17,10 @@ body {
 
 /* #region utilities */
 /* todo: create a root */
+.d_none {
+  display: none;
+}
+
 .bg_white {
   background-color: white;
 }
@@ -109,6 +113,15 @@ body {
   border-radius: 8px;
   padding: 10px;
   color: white;
+}
+
+.error_message {
+  border-radius: 8px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  background-color: red;
 }
 
 /* #endregion header */
