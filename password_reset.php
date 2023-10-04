@@ -60,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 //Content                                 //Set email format to HTML
                 $mail->Subject = 'Recupero Password';
-                $reset_link = "http://localhost/edusogno-esercizio/reset_password.php?token=" . $token;
+                $reset_link = "http://localhost/edusogno-esercizio/views/reset_password.php?token=" . $token;
                 $message = "Clicca sul seguente link per reimpostare la tua password: $reset_link";
                 $mail->Body    = $message;
 
                 $mail->send();
-                $_SESSION['message'] = "Il codice di recupero è stato inviato al tuo indirizzo mail!";
+                $_SESSION['message'] = "Il link per il recupero è stato inviato al tuo indirizzo mail!";
                 header("Location: views/login.php");
             } catch (Exception $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
