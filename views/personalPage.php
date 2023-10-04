@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "./classes/User.php";
-require_once "./classes/Database.php";
+require_once "../classes/User.php";
+require_once "../classes/Database.php";
 //This could be in a partials
 //message logic
 if (isset($_SESSION['message'])) {
@@ -21,7 +21,7 @@ $userName = $user->getName();
 $userSurname = $user->getSurname();
 
 //HTML Header
-include "./partials/header.php";
+include "../partials/header.php";
 ?>
 <h1 class="title text_bold">Ciao <?php echo ($userName . ' ' . $userSurname) ?> ecco i tuoi eventi</h1>
 <?php

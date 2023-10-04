@@ -1,7 +1,7 @@
 <?php
-require_once "./classes/Database.php";
-require_once "./classes/EventController.php";
-require_once "./classes/Event.php";
+require_once "../classes/Database.php";
+require_once "../classes/EventController.php";
+require_once "../classes/Event.php";
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {
@@ -13,12 +13,12 @@ if (isset($_SESSION['message'])) {
 $eventController = new EventController;
 $events = $eventController->getAllEvents();
 
-include "./partials/header.php";
+include "../partials/header.php";
 ?>
 
 <main>
     <h1 class="title text_bold">Tutti gli eventi esistenti</h1>
-    <form action="crud/controllerCrud.php" method="post">
+    <form action="../crud/controllerCrud.php" method="post">
         <div class="d_flex justify_content_center">
             <button class="btn bg_green text-center" type="submit" name="add_event"> AGGIUNGI UN NUOVO EVENTO</button>
         </div>

@@ -7,7 +7,7 @@ if (isset($_SESSION['message'])) {
     //remove message
     unset($_SESSION['message']);
 }
-include "./partials/header.php";
+include "../partials/header.php";
 ?>
 <main>
     <h1 class="title text_bold">Crea il tuo account</h1>
@@ -29,7 +29,7 @@ include "./partials/header.php";
             <button type="submit" class="input_submit">REGISTRATIt</button>
 
         </form>
-        <p class="box_footer">Hai già un account? <a href="index.php">Accedi</a></p>
+        <p class="box_footer">Hai già un account? <a href="login.php">Accedi</a></p>
 
     </div>
 </main>

@@ -1,16 +1,11 @@
 <?php
+//TODO: add expiration on token 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-// require './vendor/phpmailer/src/Exception.php';
-// require './vendor/phpmailer/src/PHPMailer.php';
-// require './vendor/phpmailer/src/SMTP.php';
 
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 require 'vendor/autoload.php';
 require_once('./classes/User.php');
 require_once('./classes/Database.php');
@@ -71,16 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $mail->send();
                 $_SESSION['message'] = "Il codice di recupero è stato inviato al tuo indirizzo mail";
-                header("Location: index.php");
+                header("Location: views/login.php");
             } catch (Exception $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         } else {
             $_SESSION['message'] = "L'indirizzo email non è registrato";
-            header("Location: password_reset_form.php");
+            header("Location: views/password_reset_form.php");
         }
     } else {
         $_SESSION['message'] = "Inserisci un indirizzo mail!";
-        header("Location: password_reset_form.php");
+        header("Location: views/password_reset_form.php");
     }
 }

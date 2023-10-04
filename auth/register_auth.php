@@ -1,5 +1,5 @@
 <?php
-require_once('./classes/User.php');
+require_once('../classes/User.php');
 session_start();
 //check if there are data on the login input fields
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($registation == "success") {
             $_SESSION['message'] = "Registrazione effettuata con successo!";
-            header("Location: personalPage.php");
+            header("Location: views/personalPage.php");
         } elseif ($registation == "email_already_exists") {
             $_SESSION['message'] = "L'indirizzo mail è già utilizzato";
-            header("Location: register.php");
+            header("Location: views/register.php");
         } elseif ($registation == "registration_error") {
             $_SESSION['message'] = "C'è stato un'errore durante la registrazione, riprova più tardi";
-            header("Location: register.php");
+            header("Location: views/register.php");
         }
     } else {
         $_SESSION['message'] = "Dati mancanti!";
-        header("Location: register.php");
+        header("Location: views/register.php");
     }
 }

@@ -1,5 +1,5 @@
 <?php
-require_once('./classes/User.php');
+require_once('../classes/User.php');
 session_start();
 
 //check if there are a mail and a password on the login input fields
@@ -17,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($login == "success") {
             $_SESSION['message'] = "Login effettuato con successo!";
-            header("Location: personalPage.php");
+            header("Location: ../views/personalPage.php");
         } elseif ($login == "email_not_found") {
             $_SESSION['message'] = "Email non trovata!";
-            header("Location: index.php");
+            header("Location: ../views/login.php");
         } elseif ($login == "password_mismatch") {
             $_SESSION['message'] = "Password errata";
-            header("Location: index.php");
+            header("Location: ../views/login.php");
         }
     } else {
         $_SESSION['message'] = "Dati mancanti!";
-        header("Location: index.php");
+        header("Location: ../views/login.php");
     }
 }

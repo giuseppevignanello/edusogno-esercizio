@@ -52,6 +52,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.mt_1 {
+  margin-top: 1rem;
+}
+
 .flex_wrap {
   flex-wrap: wrap;
 }
