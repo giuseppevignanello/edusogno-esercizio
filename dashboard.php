@@ -1,4 +1,5 @@
 <?php
+require_once "./classes/Database.php";
 require_once "./classes/EventController.php";
 require_once "./classes/Event.php";
 //This could be in a partials
@@ -18,7 +19,10 @@ include "./partials/header.php";
 
 <main>
     <h1 class="title text_bold">Tutti gli eventi esistenti</h1>
-    <form action="CRUD.php" method="post">
+    <form action="crud/controllerCrud.php" method="post">
+        <div class="d_flex justify_content_center">
+            <button class="btn bg_green text-center" type="submit" name="add_event"> AGGIUNGI UN NUOVO EVENTO</button>
+        </div>
         <div class="d_flex mx_2 flex_wrap justify_content_center">
             <?php
             foreach ($events as $event_item) {
@@ -30,10 +34,10 @@ include "./partials/header.php";
                 echo '<div class="d_flex justify_content_around mb_1">';
                 echo '<button class="btn bg_edit" name="edit_event" value="';
                 echo $event_item->getId();
-                echo '">EDIT</button>';
+                echo '">MODIFICA</button>';
                 echo '<button class="btn bg_delete" name="delete_event" value="';
                 echo $event_item->getId();
-                echo '">DELETE</button>';
+                echo '">ELIMINA</button>';
                 echo '</div>';
                 echo '</div>';
             }

@@ -64,6 +64,10 @@ body {
   background-color: #0057ff;
 }
 
+.bg_green {
+  background-color: green;
+}
+
 /* #endregion utilities */
 
 /* #region header */

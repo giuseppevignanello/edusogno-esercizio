@@ -9,9 +9,8 @@ class Event
     private $attendees;
     private $event_date;
 
-    public function __construct($id, $event_name, $attendees, $event_date)
+    public function __construct($event_name, $attendees, $event_date)
     {
-        $this->id = $id;
         $this->event_name = $event_name;
         $this->attendees = $attendees;
         $this->event_date = $event_date;

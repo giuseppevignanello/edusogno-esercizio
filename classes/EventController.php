@@ -25,7 +25,6 @@ class EventController
         while ($row = $result->fetch_assoc()) {
             //initialize a new Event Object 
             $event = new Event(
-                $row['id'],
                 $row['nome_evento'],
                 $row['attendees'],
                 $row['data_evento']
@@ -37,8 +36,26 @@ class EventController
         return $this->events;
     }
 
-    public function addEvent(Event $event)
+    public function storeEvent(Event $event)
     {
+        $conn = $this->database->getConnection();
+
+        $eventName = $event->getEventName();
+        $eventDateTime = $event->getEventDate();
+        $eventAttendees = $event->getAttendees();
+
+        $query = "INSERT INTO eventi (nome_evento, data_evento, attendees) VALUES (?, ?, ?)";
+
+        $stmt = $conn->prepare($query);
+        if (!$stmt) {
+            die("Query Error: " . $conn->error);
+        }
+        $stmt->bind_param("sss", $eventName, $eventDateTime, $eventAttendees);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function updateEvent($eventId, $eventName, $eventDateTime)
