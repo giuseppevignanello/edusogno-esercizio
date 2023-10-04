@@ -29,10 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //generate a random token 
             $token = bin2hex(random_bytes(32));
 
+            //calculate 1 hour of expiration (Result 1 hour back, so I have to add 3 hours to add one)
+            $expiration = date('Y-m-d H:i:s', strtotime('+3 hour'));
+
             // Store the token in databes
-            $query = "INSERT INTO reset_tokens (user_email, token) VALUES (?, ?)";
+            $query = "INSERT INTO reset_tokens (user_email, token, expiration) VALUES (?, ?, ?)";
             $stmt = $mysqli->prepare($query);
-            $stmt->bind_param("ss", $userEmail, $token);
+            $stmt->bind_param("sss", $userEmail, $token, $expiration);
             $stmt->execute();
 
             $env = parse_ini_file('.env');

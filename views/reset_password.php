@@ -18,7 +18,7 @@ if (isset($_GET['token'])) {
     $mysqli = $database->getConnection();
 
     //token check
-    $query = "SELECT * FROM reset_tokens WHERE token = ?";
+    $query = "SELECT * FROM reset_tokens WHERE token = ? AND expiration >= NOW()";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("s", $token);
     $stmt->execute();
@@ -35,7 +35,7 @@ if (isset($_GET['token'])) {
         ';
     } else {
 
-        $content = '<p class="m_2"> Il token non è valido </p>';
+        $content = '<p class="m_2"> Il token non è valido o è scaduto </p>';
     }
 } else {
 

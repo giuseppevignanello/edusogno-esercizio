@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mysqli = $database->getConnection();
 
         // token check
-        $query = "SELECT * FROM reset_tokens WHERE token = ?";
+        $query = "SELECT * FROM reset_tokens WHERE token = ? AND expiration >= NOW()";
         $stmt_select = $mysqli->prepare($query);
         $stmt_select->bind_param("s", $token);
         $stmt_select->execute();
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: views/reset_password.php?token=" . $token);
             }
         } else {
-            $_SESSION['message'] = "Token non valido o scaduto...";
+            $_SESSION['message'] = "Token non valido o è scaduto...";
             header("Location: views/reset_password.php?token=" . $token);
         }
     } else {
