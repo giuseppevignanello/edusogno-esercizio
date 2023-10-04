@@ -14,7 +14,7 @@ include "../partials/header.php";
 ?>
 <main>
     <h1 class="title text_bold">Modifica l'evento</h1>
-    <form action="CRUD.php" method="post">
+    <form action="controllerCrud.php" method="post">
         <input type="hidden" name="event_id_edit" value="<?php echo $id ?>">
         <div class="box bg_white d_flex flex_column px_2">
             <label class="label" for="event_name">Nome dell'evento</label>

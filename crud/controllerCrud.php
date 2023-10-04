@@ -32,7 +32,7 @@ if (isset($_POST['event_id_edit'])) {
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
     }
-    header('Location: dashboard.php');
+    header('Location: ../dashboard.php');
 }
 
 if (isset($_POST['add_event'])) {
@@ -55,5 +55,19 @@ if (isset($_POST['store_event'])) {
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
     }
-    header('Location: ./dashboard.php');
+    header('Location: ../dashboard.php');
+}
+
+if (isset($_POST['delete_event'])) {
+    $id = $_POST['delete_event'];
+
+
+    $delete = $eventController->deleteEvent($id);
+
+    if ($delete) {
+        $_SESSION['message'] = "Evento eliminato con successo!";
+    } else {
+        $_SESSION['message'] = "Ops, qualcosa è andato storto...";
+    }
+    header('Location: ../dashboard.php');
 }

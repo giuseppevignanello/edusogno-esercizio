@@ -13,7 +13,6 @@ if (isset($_SESSION['message'])) {
 $eventController = new EventController;
 $events = $eventController->getAllEvents();
 
-
 include "./partials/header.php";
 ?>
 
@@ -32,17 +31,27 @@ include "./partials/header.php";
                 echo '<span class="hour_date">' . $event_item->getEventDate() . '</span>';
                 echo '</div>';
                 echo '<div class="d_flex justify_content_around mb_1">';
-                echo '<button class="btn bg_edit" name="edit_event" value="';
-                echo $event_item->getId();
-                echo '">MODIFICA</button>';
-                echo '<button class="btn bg_delete" name="delete_event" value="';
-                echo $event_item->getId();
-                echo '">ELIMINA</button>';
+                echo '<button class="btn bg_edit" name="edit_event" value="' .
+                    $event_item->getId() .
+                    '">MODIFICA</button>';
+                echo '<button type="button" class="delete btn bg_delete" data-event-id="' .
+                    $event_item->getId() .
+                    '">ELIMINA</button>';
                 echo '</div>';
                 echo '</div>';
             }
             ?>
 
+        </div>
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <h2>Conferma Eliminazione</h2>
+                <p>Sei sicuro di voler eliminare questo evento?</p>
+                <div class="d_flex justify_content_around">
+                    <button class="modal_button" id="confirmDelete" name="delete_event">Conferma</button>
+                    <div class="modal_button" id="cancelDelete">Annulla</div>
+                </div>
+            </div>
         </div>
     </form>
 </main>

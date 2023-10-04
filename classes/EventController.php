@@ -30,6 +30,8 @@ class EventController
                 $row['data_evento']
             );
 
+            $event->setId($row['id']);
+
             // store the event in the events list  
             $this->events[] = $event;
         }
@@ -77,7 +79,22 @@ class EventController
     }
 
 
-    public function deleteEvent(Event $event)
+    public function deleteEvent($eventId)
     {
+        $conn = $this->database->getConnection();
+
+        $query = "DELETE FROM eventi WHERE id = ?";
+
+        $stmt = $conn->prepare($query);
+        if (!$stmt) {
+            die("Query Error: " . $conn->error);
+        }
+        $stmt->bind_param("i", $eventId);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
