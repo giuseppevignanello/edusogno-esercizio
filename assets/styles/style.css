@@ -12,6 +12,12 @@ body {
   font-family: DM Sans;
   height: 100vh;
 }
+:root {
+  --light_color: white;
+  --main_color: #0057ff;
+  --text_color: #134077;
+  --danger_color: rgb(255, 66, 66);
+}
 
 /* #endregion general */
 
@@ -22,7 +28,7 @@ body {
 }
 
 .bg_white {
-  background-color: white;
+  background-color: var(--light_color);
 }
 
 .d_flex {
@@ -48,7 +54,7 @@ body {
 .btn {
   border: none;
   padding: 1rem;
-  color: white;
+  color: var(--light_color);
   border-radius: 10px;
 }
 
@@ -65,11 +71,11 @@ body {
 }
 
 .bg_delete {
-  background-color: red;
+  background-color: var(--danger_color);
 }
 
 .bg_edit {
-  background-color: #0057ff;
+  background-color: var(--main_color);
 }
 
 .bg_green {
@@ -112,7 +118,7 @@ body {
   border: 1px solid black;
   border-radius: 8px;
   padding: 10px;
-  color: white;
+  color: var(--light_color);
 }
 
 .error_message {
@@ -121,7 +127,7 @@ body {
   border-radius: 8px;
   padding: 10px;
   color: white;
-  background-color: red;
+  background-color: var(--danger_color);
 }
 
 /* #endregion header */
@@ -135,7 +141,7 @@ body {
 }
 
 .title {
-  color: #134077;
+  color: var(--text_color);
   text-align: center;
   font-style: normal;
   line-height: 99.5%;
@@ -158,8 +164,8 @@ body {
   margin-top: 3rem;
   border: none;
   padding: 1rem;
-  color: white;
-  background: #0057ff;
+  color: var(--light_color);
+  background: var(--main_color);
   border-radius: 10px;
   margin-bottom: 1rem;
 }
@@ -232,10 +238,10 @@ body {
 }
 
 #confirmDelete {
-  background-color: red;
+  background-color: var(--danger_color);
 }
 
 #cancelDelete {
-  background-color: gray;
+  background-color: var(--main_color);
 }
 /* #endregion modal */
