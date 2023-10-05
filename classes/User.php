@@ -149,4 +149,21 @@ class User
 
         return $events;
     }
+
+    public function isAdmin()
+    {
+        $query = "SELECT isAdmin FROM utenti WHERE email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            return false;
+        }
+
+        $userData = $result->fetch_assoc();
+
+        return $userData['isAdmin'];
+    }
 }

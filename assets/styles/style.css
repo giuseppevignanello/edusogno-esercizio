@@ -50,7 +50,9 @@ body {
 .justify_content_around {
   justify-content: space-around;
 }
-
+.text_center {
+  text-align: center;
+}
 .btn {
   border: none;
   padding: 0.5rem;

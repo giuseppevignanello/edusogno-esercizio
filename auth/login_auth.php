@@ -16,8 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $login = $user->login();
 
         if ($login == "success") {
-            $_SESSION['message'] = "Login effettuato con successo!";
-            header("Location: ../views/personalPage.php");
+
+            if ($user->isAdmin()) {
+                $_SESSION['message'] = "Login effettuato con successo!";
+                header("Location: ../views/dashboard.php");
+            } else {
+                $_SESSION['message'] = "Login effettuato con successo!";
+                header("Location: ../views/personalPage.php");
+            }
         } elseif ($login == "email_not_found") {
             $_SESSION['message'] = "Email non trovata...";
             header("Location: ../views/login.php");

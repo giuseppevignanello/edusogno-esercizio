@@ -1,5 +1,5 @@
 <?php
-//to do: double password check, admin auth, bonus
+//to do: admin auth, bonus, add logout 
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {

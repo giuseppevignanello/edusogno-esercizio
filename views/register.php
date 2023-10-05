@@ -41,7 +41,7 @@ include "../partials/header.php";
                 password</label>
             <div class="password_container d_flex align_items_center">
                 <input class="input" id="password_confirm" type="password" required>
-                <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
+                <span class="password_toggle_icon" id="toggle_password_confirm"><i class="fa-solid fa-eye"></i></span>
             </div>
 
             <span class="error_message d_none" id="password_error_confirm">Le password non corrispondono</span>

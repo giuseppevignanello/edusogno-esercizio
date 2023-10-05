@@ -14,6 +14,7 @@ include "../partials/header.php";
 
 <main>
     <h1 class="title text_bold">Hai già un account?</h1>
+    <h5 class="mb_1 text_center">Prova admin@admin.com e Admin0000' per accedere alla dashboard 😉</h5>
     <div class="box bg_white">
         <form action="../auth/login_auth.php" method="post" class="d_flex flex_column px_2">
             <label class=" text_bold label" for="email_login">Inserisci l'e-mail</label>
