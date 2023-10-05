@@ -1,12 +1,7 @@
 <?php
 session_start();
-//This could be in a partials
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
 
-    //remove message
-    unset($_SESSION['message']);
-}
+include "../partials/message.php";
 include "../partials/header.php";
 ?>
 <main>
@@ -40,7 +35,7 @@ include "../partials/header.php";
                 la
                 password</label>
             <div class="password_container d_flex align_items_center">
-                <input class="input" id="password_confirm" type="password">
+                <input class="input" id="password_confirm" type="password" required>
                 <span class="password_toggle_icon" id="toggle_password_confirm"><i class="fa-solid fa-eye"></i></span>
             </div>
 
@@ -55,7 +50,7 @@ include "../partials/header.php";
 
 
 <script src="../assets/js/messageScript.js"></script>
-<!-- <script src="../assets/js/registerValidation.js"></script> -->
+<script src="../assets/js/registerValidation.js"></script>
 <script src="../assets/js/passwordToggle.js"></script>
 </body>
 

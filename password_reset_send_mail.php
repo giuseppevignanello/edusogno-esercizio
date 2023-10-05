@@ -1,5 +1,4 @@
 <?php
-//TODO: add expiration on token 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

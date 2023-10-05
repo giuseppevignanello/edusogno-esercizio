@@ -3,12 +3,7 @@ require_once "../classes/Database.php";
 //to do: add password confirmation
 //This could be in a partials
 session_start();
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-
-    //remove message
-    unset($_SESSION['message']);
-}
+include "../partials/message.php";
 
 if (isset($_GET['token'])) {
     $token = $_GET['token'];

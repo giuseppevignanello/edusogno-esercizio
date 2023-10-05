@@ -4,7 +4,7 @@ require_once "./classes/Database.php";
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['token']) && !empty($_POST['new_password'])) {
+    if (!empty($_POST['token']) && checkPassword($_POST['new_password'])) {
         $token = $_POST['token'];
         $newPassword = $_POST['new_password'];
         $newHashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
@@ -51,4 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     header("Location: views/reset_password.php");
+}
+
+function checkPassword($passwordLogin)
+{
+    $passwordPattern = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?['#?!@$%^&*-]).{8,}$/";
+
+    if (empty($passwordLogin)) {
+        $_SESSION['message'] = "Password mancante...";
+        return false;
+    } else if (!preg_match($passwordPattern, $passwordLogin)) {
+        $_SESSION['message'] = "Formato della password non valido...";
+    } else {
+        return true;
+    }
 }

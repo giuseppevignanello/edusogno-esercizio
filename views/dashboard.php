@@ -5,14 +5,8 @@
 require_once "../classes/Database.php";
 require_once "../classes/EventController.php";
 require_once "../classes/Event.php";
-//This could be in a partials
 session_start();
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-
-    //remove message
-    unset($_SESSION['message']);
-}
+include "../partials/message.php";
 $eventController = new EventController;
 $events = $eventController->getAllEvents();
 
@@ -24,6 +18,9 @@ include "../partials/header.php";
     <form action="../crud/controllerCrud.php" method="post">
         <div class="d_flex justify_content_center">
             <button class="btn bg_green text-center" type="submit" name="add_event"> AGGIUNGI UN NUOVO EVENTO</button>
+        </div>
+        <div class="d_flex justify_content_center mt_1">
+            <button id="logoutButton" class="btn bg_edit">Logout</button>
         </div>
         <div class="d_flex mx_2 flex_wrap justify_content_center flex_sm_events">
             <?php
@@ -62,9 +59,6 @@ include "../partials/header.php";
 
 
     </form>
-    <div class="d_flex justify_content_center">
-        <button id="logoutButton" class="btn bg_edit">Logout</button>
-    </div>
     <!-- logout modal -->
     <div id="logoutModal" class="modal" method="post">
         <form action="../auth/logout_auth.php" method="post">

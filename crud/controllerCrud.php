@@ -17,8 +17,8 @@ if (isset($_POST['edit_event'])) {
 
 //update
 //TODO: change name into update
-if (isset($_POST['event_id_edit'])) {
-    $id = $_POST['event_id_edit'];
+if (isset($_POST['update'])) {
+    $id = $_POST['update'];
     $eventName = $_POST['event_name'];
     $eventDate = $_POST['event_date'];
     $eventTime = $_POST['event_time'];

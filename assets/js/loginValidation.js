@@ -18,7 +18,7 @@ formLogin.addEventListener("submit", function (event) {
   const passwordPattern =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!?']).{8,}$/;
 
-  if (!passwordPattern.test(passwordInput)) {
+  if (!passwordPattern.test(passwordInput.value)) {
     validator = false;
     errorPasswordLogin.classList.remove("d_none");
   }

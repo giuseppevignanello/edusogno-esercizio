@@ -2,14 +2,8 @@
 session_start();
 require_once "../classes/User.php";
 require_once "../classes/Database.php";
-//This could be in a partials
-//message logic
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
 
-    //remove message
-    unset($_SESSION['message']);
-}
+include "../partials/message.php";
 
 $user = new User($_SESSION['user_email'], $_SESSION['user_password']);
 $database = new Database();
@@ -24,6 +18,9 @@ $userSurname = $user->getSurname();
 include "../partials/header.php";
 ?>
 <h1 class="title text_bold">Ciao <?php echo ($userName . ' ' . $userSurname) ?> ecco i tuoi eventi</h1>
+<div class="d_flex justify_content_center mt_1 mb_1">
+    <button id="logoutButton" class="btn bg_edit">Logout</button>
+</div>
 <?php
 foreach ($events as $event_item) {
 
@@ -38,9 +35,7 @@ foreach ($events as $event_item) {
     echo '</div>';
 }
 ?>
-<div class="d_flex justify_content_center mt_1">
-    <button id="logoutButton" class="btn bg_edit">Logout</button>
-</div>
+
 
 <div id="logoutModal" class="modal" method="post">
     <form action="../auth/logout_auth.php" method="post">

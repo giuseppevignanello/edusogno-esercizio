@@ -26,7 +26,6 @@ class User
         $result = $stmt->get_result();
 
         //if there are not result
-        //TODO: usign specific function
         if ($result->num_rows === 0) {
             return "email_not_found";
         }
