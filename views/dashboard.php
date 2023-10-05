@@ -55,3 +55,9 @@ include "../partials/header.php";
         </div>
     </form>
 </main>
+
+<script src="../assets/js/modalLogic.js"></script>
+<script src="../assets/js/messageScript.js"></script>
+</body>
+
+</html>

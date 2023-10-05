@@ -1,5 +1,5 @@
 <?php
-//to do: input validation js ,responsive, show password on login and registe, admin auth, bonus
+//to do: input validation on password reset js ; responsive, show password on login and register, admin auth, bonus
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {

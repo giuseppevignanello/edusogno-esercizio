@@ -26,10 +26,13 @@ if (isset($_GET['token'])) {
 
     if ($result->num_rows === 1) {
         $content = '
-        <form action="../reset_password_controller.php" method="post" class="d_flex flex_column px_2">
+        <form id="form_reset_password" action="../reset_password_controller.php" method="post" class="d_flex flex_column px_2">
             <input type="hidden" name="token" value="' . $token . '">
             <label class="text_bold label" for="new_password">Inserisci la nuova password</label>
             <input class="input" type="password" id="new_password" name="new_password" placeholder="Scrivila qui" required>
+            <span class="error_message d_none" id="password_error">La password deve contenere almeno un carattere
+                maiuscolo,
+                uno numerico, un simbolo e deve essere lunga almeno 8 caratteri.</span>
             <button type="submit" class="input_submit">Invia</button>
         </form>
         ';
@@ -51,6 +54,10 @@ include "../partials/header.php";
         <?php echo $content; ?>
     </div>
 </main>
+
+
+<script src="../assets/js/messageScript.js"></script>
+<script src="../assets/js/passwordReset.js"></script>
 </body>
 
 </html>

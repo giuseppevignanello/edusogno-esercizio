@@ -41,6 +41,9 @@ include "../partials/header.php";
     </div>
 </main>
 
+
+<script src="../assets/js/messageScript.js"></script>
+<script src="../assets/js/registerValidation.js"></script>
 </body>
 
 </html>

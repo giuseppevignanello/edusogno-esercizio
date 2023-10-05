@@ -15,14 +15,20 @@ include "../partials/header.php";
 <main>
     <h1 class="title text_bold">Reimposta la tua password</h1>
     <div class="box bg_white">
-        <form action="../password_reset.php" method="post" class="d_flex flex_column px_2">
+        <form id="form_reset_password_mail" action="../password_reset.php" method="post"
+            class="d_flex flex_column px_2">
             <label class=" text_bold label" for="email_login">Inserisci l'e-mail</label>
-            <input class="input" type="mail" id="email_reset_password" name="email_reset_password" placeholder="name@example.com " required>
+            <input class="input" type="mail" id="email_reset_password" name="email_reset_password"
+                placeholder="name@example.com " required>
+            <span class="error_message d_none" id="mail_error">Inserisci un indirizzo mail valido</span>
             <button type="submit" class="input_submit">INVIA</button>
         </form>
         <p class="box_footer">Hai ricordato la tua password? <a href="login.php">ACCEDI</a></p>
     </div>
 </main>
+
+<script src="../assets/js/messageScript.js"></script>
+<script src="../assets/js/passwordResetMail.js"></script>
 </body>
 
 </html>

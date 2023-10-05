@@ -38,6 +38,8 @@ foreach ($events as $event_item) {
     echo '</div>';
 }
 ?>
+
+<script src="../assets/js/messageScript.js"></script>
 </body>
 
 </html>
