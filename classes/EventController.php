@@ -121,15 +121,32 @@ class EventController
     {
         $conn = $this->database->getConnection();
 
-        $query = "DELETE FROM eventi WHERE id = ?";
-
+        $query = "SELECT nome_evento, data_evento, attendees FROM eventi WHERE id = ?";
         $stmt = $conn->prepare($query);
         if (!$stmt) {
             die("Query Error: " . $conn->error);
         }
         $stmt->bind_param("i", $eventId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
 
-        if ($stmt->execute()) {
+        $eventName = $row['nome_evento'];
+        $eventDateTime = $row['data_evento'];
+        $eventAttendees = $row['attendees'];
+
+
+        $deleteQuery = "DELETE FROM eventi WHERE id = ?";
+        $deleteStmt = $conn->prepare($deleteQuery);
+        if (!$deleteStmt) {
+            die("Query Error: " . $conn->error);
+        }
+        $deleteStmt->bind_param("i", $eventId);
+
+        if ($deleteStmt->execute()) {
+            $subject = "Evento eliminato";
+            $message = "L'evento $eventName è stato eliminato. Era programmato per il giorno $eventDateTime. Ci scusiamo per il disagio...";
+            EventController::sendMail($subject, $message, $eventAttendees);
             return true;
         } else {
             return false;

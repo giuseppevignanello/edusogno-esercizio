@@ -3,7 +3,7 @@
 
 require_once "../classes/EventController.php";
 
-
+session_start();
 $eventController = new EventController;
 $events = $eventController->getAllEvents();
 
@@ -16,7 +16,6 @@ if (isset($_POST['edit_event'])) {
 }
 
 //update
-//TODO: change name into update
 if (isset($_POST['update'])) {
     $id = $_POST['update'];
     $eventName = $_POST['event_name'];
@@ -64,14 +63,13 @@ if (isset($_POST['store_event'])) {
 //delete
 if (isset($_POST['delete_event'])) {
     $id = $_POST['delete_event'];
-
-
     $delete = $eventController->deleteEvent($id);
 
     if ($delete) {
         $_SESSION['message'] = "Evento eliminato con successo!";
+        header('Location: ../views/dashboard.php');
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
+        header('Location: ../views/dashboard.php');
     }
-    header('Location: ../dashboard.php');
 }

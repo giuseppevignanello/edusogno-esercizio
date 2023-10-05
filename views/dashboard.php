@@ -34,7 +34,7 @@ include "../partials/header.php";
                 echo '<button class="btn bg_edit" name="edit_event" value="' .
                     $event_item->getId() .
                     '">MODIFICA</button>';
-                echo '<button type="button" class="delete btn bg_delete" data-event-id="' .
+                echo '<button type="button" class="delete btn bg_delete" value="' .
                     $event_item->getId() .
                     '">ELIMINA</button>';
                 echo '</div>';
@@ -50,14 +50,11 @@ include "../partials/header.php";
                 <h2>Conferma Eliminazione</h2>
                 <p>Sei sicuro di voler eliminare questo evento?</p>
                 <div class="d_flex justify_content_around">
-                    <button class="modal_button" id="confirmDelete" name="delete_event">Conferma</button>
+                    <button type="submit" class="modal_button" id="confirmDelete" name="delete_event">Conferma</button>
                     <div class="modal_button" id="cancelDelete">Annulla</div>
                 </div>
             </div>
         </div>
-
-
-
     </form>
     <!-- logout modal -->
     <div id="logoutModal" class="modal" method="post">

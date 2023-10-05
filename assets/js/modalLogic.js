@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const cancelDelete = document.getElementById("cancelDelete");
 
       confirmDelete.value = eventId;
+      console.log(confirmDelete);
 
       cancelDelete.addEventListener("click", function () {
         deleteModal.style.display = "none";
