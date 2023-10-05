@@ -55,7 +55,7 @@ if (isset($_POST['store_event'])) {
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
     }
-    header('Location: ..views/dashboard.php');
+    header('Location: ../views/dashboard.php');
 }
 
 if (isset($_POST['delete_event'])) {

@@ -1,4 +1,10 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../vendor/autoload.php';
 require_once "Database.php";
 require_once "Event.php";
 class EventController
@@ -53,7 +59,32 @@ class EventController
             die("Query Error: " . $conn->error);
         }
         $stmt->bind_param("sss", $eventName, $eventDateTime, $eventAttendees);
+
+        //user and password to send emails
+        $env = parse_ini_file('../.env');
+        $SMTP_USER = $env['SMTP_USER'];
+        $SMTP_PASS = $env['SMTP_PASS'];
         if ($stmt->execute()) {
+
+            //send emails
+            $eventAttendees = explode(',', $eventAttendees);
+            foreach ($eventAttendees as $attendeeEmail) {
+                $mail = new PHPMailer(true);
+                $mail->SMTPDebug = 2;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Username = $SMTP_USER;
+                $mail->Password =  $SMTP_PASS;
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->setFrom('from@example.com', 'Mailer');
+                $mail->addAddress($attendeeEmail);
+                $mail->Subject = 'Evento Creato!';
+                $message = "L'evento $eventName è stato appena aggiunto. Ti aspettiamo il giorno $eventDateTime";
+                $mail->Body    = $message;
+                $mail->send();
+            }
             return true;
         } else {
             return false;
