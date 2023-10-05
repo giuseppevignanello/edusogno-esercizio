@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const surnameError = document.getElementById("surname_error");
   const emailError = document.getElementById("mail_error");
   const passwordError = document.getElementById("password_error");
+  const passwordConfirm = document.getElementById("password_confirm");
+  const passwordErrorConfirm = document.getElementById(
+    "password_error_confirm"
+  );
 
   formRegister.addEventListener("submit", function (event) {
     let validator = true;
@@ -41,7 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordError.classList.remove("d_none");
     }
 
-    console.log(passwordInput.value);
+    if (passwordInput.value != passwordConfirm.value) {
+      validator = false;
+      passwordErrorConfirm.classList.remove("d_none");
+    }
 
     if (!validator) {
       event.preventDefault();

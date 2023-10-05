@@ -36,6 +36,15 @@ include "../partials/header.php";
             <span class="error_message d_none" id="password_error">La password deve contenere almeno un carattere
                 maiuscolo,
                 uno numerico, un simbolo e deve essere lunga almeno 8 caratteri.</span>
+            <label for="password_confirm" class=" text_bold label">Inserisci di nuovo
+                la
+                password</label>
+            <div class="password_container d_flex align_items_center">
+                <input class="input" id="password_confirm" type="password" required>
+                <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+            <span class="error_message d_none" id="password_error_confirm">Le password non corrispondono</span>
             <button type="submit" class="input_submit">REGISTRATI</button>
 
         </form>
