@@ -18,6 +18,10 @@ include "../partials/header.php"
         <div class="box bg_white d_flex flex_column px_2">
             <label class="label" for="event_name">Nome dell'evento</label>
             <input class="input" type="text" id="event_name" name="event_name">
+            <label class="label" for="event_attendees">Partecipanti all'evento(scrivi le email e dividili con una
+                virgola)</label>
+            <textarea class="input" id="event_attendees" name="event_attendees"></textarea>
+
             <label class="label" for="event_date">Data dell'evento</label>
             <input class="input" type="date" id="event_date" name="event_date">
             <label class="label" for="event_time">Orario dell'evento</label>

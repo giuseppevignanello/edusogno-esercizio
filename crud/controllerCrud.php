@@ -44,7 +44,7 @@ if (isset($_POST['store_event'])) {
     $eventDate = $_POST['event_date'];
     $eventTime = $_POST['event_time'];
     $eventDateTime = $eventDate . ' ' . $eventTime . ':00';
-    $eventAttendees = "";
+    $eventAttendees = $_POST['event_attendees'];
 
     $newEvent = new Event($eventName, $eventAttendees, $eventDateTime);
 
@@ -55,7 +55,7 @@ if (isset($_POST['store_event'])) {
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
     }
-    header('Location: ../dashboard.php');
+    header('Location: ..views/dashboard.php');
 }
 
 if (isset($_POST['delete_event'])) {
