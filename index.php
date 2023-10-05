@@ -1,5 +1,5 @@
 <?php
-//to do; responsive, show password on login and register, double password check, admin auth, bonus
+//to do; responsive, double password check, admin auth, bonus
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {

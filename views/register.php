@@ -47,7 +47,7 @@ include "../partials/header.php";
 
 <script src="../assets/js/messageScript.js"></script>
 <script src="../assets/js/registerValidation.js"></script>
-<script src="../assets/js/passwordToggle/passwordToggleRegister.js"></script>
+<script src="../assets/js/passwordToggle.js"></script>
 </body>
 
 </html>

@@ -61,7 +61,7 @@ include "../partials/header.php";
 
 <script src="../assets/js/messageScript.js"></script>
 <script src="../assets/js/passwordReset.js"></script>
-<script src="../assets/js/passwordToggle/passwordToggleReset.js"></script>
+<script src="../assets/js/passwordToggle.js"></script>
 </body>
 
 </html>

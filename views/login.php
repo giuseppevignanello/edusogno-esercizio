@@ -32,7 +32,7 @@ include "../partials/header.php";
 </main>
 
 <script src="../assets/js/messageScript.js"></script>
-<script src="../assets/js/passwordToggle/passwordToggleLogin.js"></script>
+<script src="../assets/js/passwordToggle.js"></script>
 </body>
 
 </html>
