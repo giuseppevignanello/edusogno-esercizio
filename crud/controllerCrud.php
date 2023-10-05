@@ -18,6 +18,7 @@ if (isset($_POST['edit_event'])) {
     header('Location: edit.php?id=' . $id);
 }
 
+//update
 if (isset($_POST['event_id_edit'])) {
     $id = $_POST['event_id_edit'];
     $eventName = $_POST['event_name'];
@@ -32,13 +33,16 @@ if (isset($_POST['event_id_edit'])) {
     } else {
         $_SESSION['message'] = "Ops, qualcosa è andato storto...";
     }
-    header('Location: ../dashboard.php');
+    header('Location: ../views/dashboard.php');
 }
 
+//redirect to create
 if (isset($_POST['add_event'])) {
     header('Location: create.php');
 }
 
+
+//store
 if (isset($_POST['store_event'])) {
     $eventName = $_POST['event_name'];
     $eventDate = $_POST['event_date'];
@@ -58,6 +62,8 @@ if (isset($_POST['store_event'])) {
     header('Location: ../views/dashboard.php');
 }
 
+
+//delete
 if (isset($_POST['delete_event'])) {
     $id = $_POST['delete_event'];
 

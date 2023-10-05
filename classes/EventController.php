@@ -44,6 +44,8 @@ class EventController
         return $this->events;
     }
 
+
+    //store method
     public function storeEvent(Event $event)
     {
         $conn = $this->database->getConnection();
@@ -91,10 +93,26 @@ class EventController
         }
     }
 
+    //update method
     public function updateEvent($eventId, $eventName, $eventDateTime)
     {
         $conn = $this->database->getConnection();
 
+        $conn = $this->database->getConnection();
+
+        //get attendees
+        $getEmailsQuery = "SELECT attendees FROM eventi WHERE id = ?";
+        $getEmailsStmt = $conn->prepare($getEmailsQuery);
+        if (!$getEmailsStmt) {
+            die("Query Error: " . $conn->error);
+        }
+        $getEmailsStmt->bind_param("i", $eventId);
+        $getEmailsStmt->execute();
+        $result = $getEmailsStmt->get_result();
+        $row = $result->fetch_assoc();
+        $eventAttendees = $row['attendees'];
+
+        //update
         $query = "UPDATE eventi SET nome_evento = ?, data_evento = ?, attendees = attendees WHERE id = ?";
 
         $stmt = $conn->prepare($query);
@@ -102,7 +120,33 @@ class EventController
             die("Query Error: " . $conn->error);
         }
         $stmt->bind_param("ssi", $eventName, $eventDateTime, $eventId);
+
+
+        //user and password to send emails
+        $env = parse_ini_file('../.env');
+        $SMTP_USER = $env['SMTP_USER'];
+        $SMTP_PASS = $env['SMTP_PASS'];
+
         if ($stmt->execute()) {
+            //send emails
+            $eventAttendees = explode(',', $eventAttendees);
+            foreach ($eventAttendees as $attendeeEmail) {
+                $mail = new PHPMailer(true);
+                $mail->SMTPDebug = 2;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Username = $SMTP_USER;
+                $mail->Password =  $SMTP_PASS;
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->setFrom('from@example.com', 'Mailer');
+                $mail->addAddress($attendeeEmail);
+                $mail->Subject = 'Evento Modificato!';
+                $message = "L'evento $eventName è stato appena modificato. Ti aspettiamo il giorno $eventDateTime";
+                $mail->Body    = $message;
+                $mail->send();
+            }
             return true;
         } else {
             return false;
