@@ -22,7 +22,7 @@ include "../partials/header.php";
         <div class="d_flex justify_content_center">
             <button class="btn bg_green text-center" type="submit" name="add_event"> AGGIUNGI UN NUOVO EVENTO</button>
         </div>
-        <div class="d_flex mx_2 flex_wrap justify_content_center">
+        <div class="d_flex mx_2 flex_wrap justify_content_center flex_sm_events">
             <?php
             foreach ($events as $event_item) {
                 echo '<div class="event box bg_white">';

@@ -53,9 +53,10 @@ body {
 
 .btn {
   border: none;
-  padding: 1rem;
+  padding: 0.5rem;
   color: var(--light_color);
   border-radius: 10px;
+  font-size: 10px;
 }
 
 .mb_1 {
@@ -100,7 +101,7 @@ body {
 /* #region header */
 .app_header {
   height: 80px;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .logo {
@@ -134,7 +135,7 @@ body {
 
 /* #region main */
 .box {
-  width: 662px;
+  width: 80%;
   border: 1px solid black;
   margin: auto;
   border-radius: 20px;
@@ -246,3 +247,13 @@ body {
   background-color: var(--main_color);
 }
 /* #endregion modal */
+
+@media screen and (max-width: 540px) {
+  .flex_sm_events {
+    flex-direction: column;
+    align-items: center;
+  }
+  .event {
+    width: 50%;
+  }
+}
