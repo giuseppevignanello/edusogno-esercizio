@@ -1,5 +1,5 @@
 <?php
-//to do: admin auth, bonus, add logout 
+//to do: bonus, add logout 
 //This could be in a partials
 session_start();
 if (isset($_SESSION['message'])) {

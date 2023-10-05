@@ -241,11 +241,13 @@ body {
   border-radius: 10px;
 }
 
-#confirmDelete {
+#confirmDelete,
+#confirmLogout {
   background-color: var(--danger_color);
 }
 
-#cancelDelete {
+#cancelDelete,
+#cancelLogout {
   background-color: var(--main_color);
 }
 /* #endregion modal */

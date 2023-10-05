@@ -38,8 +38,25 @@ foreach ($events as $event_item) {
     echo '</div>';
 }
 ?>
+<div class="d_flex justify_content_center mt_1">
+    <button id="logoutButton" class="btn bg_edit">Logout</button>
+</div>
+
+<div id="logoutModal" class="modal" method="post">
+    <form action="../auth/logout_auth.php" method="post">
+        <div class="modal-content">
+            <h2>Conferma Logout</h2>
+            <p>Sei sicuro di voler effettuare il logout?</p>
+            <div class="d_flex justify_content_around">
+                <button id="confirmLogout" class="modal_button">Conferma</button>
+                <div id="cancelLogout" class="modal_button">Annulla</div>
+            </div>
+        </div>
+    </form>
+</div>
 
 <script src="../assets/js/messageScript.js"></script>
+<script src="../assets/js/modalLogoutLogic.js"></script>
 </body>
 
 </html>
