@@ -17,11 +17,13 @@ include "../partials/header.php";
     <div class="box bg_white">
         <form action="../auth/login_auth.php" method="post" class="d_flex flex_column px_2">
             <label class=" text_bold label" for="email_login">Inserisci l'e-mail</label>
-            <input class="input" type="mail" id="email_login" name="email_login" placeholder="name@example.com "
-                required>
+            <input class="input" type="mail" id="email_login" name="email_login" placeholder="name@example.com " required>
             <label class="text_bold label" for="password_login">Inserisci la password</label>
-            <input class="input" type="password" id="password_login" name="password_login" placeholder="Scrivila qui"
-                required>
+            <div class="password_container d_flex align_items_center">
+                <input class="input" type="password" id="password_login" name="password_login" placeholder="Scrivila qui" required>
+                <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
             <button type="submit" class="input_submit">ACCEDI</button>
         </form>
         <p class="box_footer">Non hai ancora un profilo? <a href="register.php">Registrati</a> <br>
@@ -30,6 +32,7 @@ include "../partials/header.php";
 </main>
 
 <script src="../assets/js/messageScript.js"></script>
+<script src="../assets/js/passwordToggle/passwordToggleLogin.js"></script>
 </body>
 
 </html>

@@ -29,7 +29,10 @@ include "../partials/header.php";
             <label for="password_input_register" class=" text_bold label">Inserisci
                 la
                 password</label>
-            <input class="input" id="password_input_register" type="password" name="password_register" required>
+            <div class="password_container d_flex align_items_center">
+                <input class="input" id="password_input_register" type="password" name="password_register" required>
+                <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
+            </div>
             <span class="error_message d_none" id="password_error">La password deve contenere almeno un carattere
                 maiuscolo,
                 uno numerico, un simbolo e deve essere lunga almeno 8 caratteri.</span>
@@ -44,6 +47,7 @@ include "../partials/header.php";
 
 <script src="../assets/js/messageScript.js"></script>
 <script src="../assets/js/registerValidation.js"></script>
+<script src="../assets/js/passwordToggle/passwordToggleRegister.js"></script>
 </body>
 
 </html>
