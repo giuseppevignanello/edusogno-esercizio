@@ -18,13 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let validator = true;
 
     //name validation
-    if (nameInput.value.length < 3 || nameInput.value.length > 15) {
+    if (nameInput.value.length < 3 || nameInput.value.length > 20) {
       validator = false;
       nameError.classList.remove("d_none");
-
-      //surname validation
     }
-    if (surnameInput.value.length < 3 || surnameInput.value.length > 15) {
+    //surname validation
+    if (surnameInput.value.length < 3 || surnameInput.value.length > 20) {
       validator = false;
       surnameError.classList.remove("d_none");
     }

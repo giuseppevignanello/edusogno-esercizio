@@ -3,7 +3,7 @@ require_once('../classes/User.php');
 session_start();
 //check if there are data on the login input fields
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['name_register']) && !empty($_POST['surname_register']) && !empty($_POST['email_register']) && !empty($_POST['password_register'])) {
+    if (checkNameAndSurname($_POST['name_register'], $_POST['surname_register'])  && checkEmail($_POST['email_register']) && checkPassword($_POST['password_register'])) {
         $name = $_POST['name_register'];
         $surname = $_POST['surname_register'];
         $email = $_POST['email_register'];
@@ -28,7 +28,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: ../views/register.php");
         }
     } else {
-        $_SESSION['message'] = "Dati mancanti...";
-        header("Location: views/register.php");
+        //$_SESSION['message'] = "Dati mancanti...";
+        header("Location: ../views/register.php");
+    }
+}
+
+function checkNameAndSurname($name, $surname)
+{
+    $validator = true;
+    if (empty($name)) {
+        $_SESSION['message'] = "Nome mancante...";
+        $validator = false;
+    } else if (strlen($name) < 3 || strlen($name) > 20) {
+        $_SESSION['message'] = "Formato del nome non valido";
+        $validator = false;
+    } else if (empty($surname)) {
+        $_SESSION['message'] = "Cognome mancante...";
+        $validator = false;
+    } else if (strlen($surname) < 3 || strlen($surname) > 20) {
+        $_SESSION['message'] = "Formato del cognome non valido";
+        $validator = false;
+    }
+
+    return $validator;
+}
+
+function checkEmail($emailLogin)
+{
+
+    if (empty($emailLogin)) {
+        $_SESSION['message'] = "Mail mancante...";
+        return false;
+    } else if (!filter_var($emailLogin, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['message'] = "Formato della mail non valido...";
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkPassword($passwordLogin)
+{
+    $passwordPattern = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?['#?!@$%^&*-]).{8,}$/";
+
+    if (empty($passwordLogin)) {
+        $_SESSION['message'] = "Password mancante...";
+        return false;
+    } else if (!preg_match($passwordPattern, $passwordLogin)) {
+        $_SESSION['message'] = "Formato della password non valido...";
+    } else {
+        return true;
     }
 }

@@ -15,22 +15,22 @@ include "../partials/header.php";
         <form id="form_register" action="../auth/register_auth.php" method="post" class="d_flex flex_column px_2">
             <label for="name_input_register" class=" text_bold label">Inserisci il
                 nome</label>
-            <input class="input" id="name_input_register" type="text" name="name_register" required>
-            <span class="error_message d_none" id="name_error">Il nome deve essere tra 3 e 15 caratteri.</span>
+            <input class="input" id="name_input_register" type="text" name="name_register">
+            <span class="error_message d_none" id="name_error">Il nome deve essere tra 3 e 20 caratteri.</span>
             <label for="surname_input_register" class=" text_bold label">Inserisci il
                 cognome</label>
-            <input class="input" id="surname_input_register" type="text" name="surname_register" required>
-            <span class="error_message d_none" id="surname_error">Il cognome deve essere tra 3 e 15 caratteri.</span>
+            <input class="input" id="surname_input_register" type="text" name="surname_register">
+            <span class="error_message d_none" id="surname_error">Il cognome deve essere tra 3 e 20 caratteri.</span>
             <label for="mail_input_register" class=" text_bold label">Inserisci la
                 mail</label>
 
-            <input class="input" id="mail_input_register" type="mail" name="email_register" required>
+            <input class="input" id="mail_input_register" type="mail" name="email_register">
             <span class="error_message d_none" id="mail_error">Inserisci un indirizzo mail valido</span>
             <label for="password_input_register" class=" text_bold label">Inserisci
                 la
                 password</label>
             <div class="password_container d_flex align_items_center">
-                <input class="input" id="password_input_register" type="password" name="password_register" required>
+                <input class="input" id="password_input_register" type="password" name="password_register">
                 <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
             </div>
             <span class="error_message d_none" id="password_error">La password deve contenere almeno un carattere
@@ -40,7 +40,7 @@ include "../partials/header.php";
                 la
                 password</label>
             <div class="password_container d_flex align_items_center">
-                <input class="input" id="password_confirm" type="password" required>
+                <input class="input" id="password_confirm" type="password">
                 <span class="password_toggle_icon" id="toggle_password_confirm"><i class="fa-solid fa-eye"></i></span>
             </div>
 
@@ -55,7 +55,7 @@ include "../partials/header.php";
 
 
 <script src="../assets/js/messageScript.js"></script>
-<script src="../assets/js/registerValidation.js"></script>
+<!-- <script src="../assets/js/registerValidation.js"></script> -->
 <script src="../assets/js/passwordToggle.js"></script>
 </body>
 
