@@ -3,7 +3,6 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
 
 
 require 'vendor/autoload.php';
@@ -46,27 +45,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $mail = new PHPMailer(true);
             try {
-                //Server settings
-                $mail->SMTPDebug = 2;                      //Enable verbose debug output
-                $mail->isSMTP();                                            //Send using SMTP
+                $mail->SMTPDebug = 2;
+                $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Username = $SMTP_USER;
-                $mail->Password =  $SMTP_PASS;                 //Set the SMTP server to send through
-                $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-                $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
-                $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-                //Recipients
+                $mail->Password =  $SMTP_PASS;
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
                 $mail->setFrom('from@example.com', 'Mailer');
-                $mail->addAddress($userEmail);     //Add a recipient
-
-
-                //Content                                 //Set email format to HTML
+                $mail->addAddress($userEmail);
                 $mail->Subject = 'Recupero Password';
                 $reset_link = "http://localhost/edusogno-esercizio/views/reset_password.php?token=" . $token;
                 $message = "Clicca sul seguente link per reimpostare la tua password: $reset_link";
                 $mail->Body    = $message;
-
                 $mail->send();
                 $_SESSION['message'] = "Il link per il recupero è stato inviato al tuo indirizzo mail!";
                 header("Location: views/login.php");

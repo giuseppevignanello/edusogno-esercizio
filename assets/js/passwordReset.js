@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   formPasswordReset.addEventListener("submit", function (event) {
     let validator = true;
     const passwordPattern =
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!?']).{8,}$/;
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!?'£]).{8,}$/;
     if (!passwordPattern.test(newPassword.value)) {
       validator = false;
       passwordError.classList.remove("d_none");

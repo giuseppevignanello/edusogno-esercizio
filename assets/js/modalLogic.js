@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   deleteButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       const eventId = button.value;
-      console.log(eventId);
       const deleteModal = document.getElementById("deleteModal");
       deleteModal.style.display = "block";
 

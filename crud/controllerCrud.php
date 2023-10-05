@@ -1,7 +1,4 @@
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 
 require_once "../classes/EventController.php";
@@ -19,6 +16,7 @@ if (isset($_POST['edit_event'])) {
 }
 
 //update
+//TODO: change name into update
 if (isset($_POST['event_id_edit'])) {
     $id = $_POST['event_id_edit'];
     $eventName = $_POST['event_name'];

@@ -49,7 +49,6 @@ class EventController
     public function storeEvent(Event $event)
     {
         $conn = $this->database->getConnection();
-        var_dump($event);
         $eventName = $event->getEventName();
         $eventDateTime = $event->getEventDate();
         $eventAttendees = $event->getAttendees();
@@ -62,31 +61,13 @@ class EventController
         }
         $stmt->bind_param("sss", $eventName, $eventDateTime, $eventAttendees);
 
-        //user and password to send emails
-        $env = parse_ini_file('../.env');
-        $SMTP_USER = $env['SMTP_USER'];
-        $SMTP_PASS = $env['SMTP_PASS'];
+
         if ($stmt->execute()) {
 
+            $subject = "Evento creato";
+            $message = "L'evento $eventName è stato appena aggiunto. Ti aspettiamo il giorno $eventDateTime";
             //send emails
-            $eventAttendees = explode(',', $eventAttendees);
-            foreach ($eventAttendees as $attendeeEmail) {
-                $mail = new PHPMailer(true);
-                $mail->SMTPDebug = 2;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->Username = $SMTP_USER;
-                $mail->Password =  $SMTP_PASS;
-                $mail->SMTPAuth = true;
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-                $mail->setFrom('from@example.com', 'Mailer');
-                $mail->addAddress($attendeeEmail);
-                $mail->Subject = 'Evento Creato!';
-                $message = "L'evento $eventName è stato appena aggiunto. Ti aspettiamo il giorno $eventDateTime";
-                $mail->Body    = $message;
-                $mail->send();
-            }
+            EventController::sendMail($subject, $message, $eventAttendees);
             return true;
         } else {
             return false;
@@ -122,37 +103,19 @@ class EventController
         $stmt->bind_param("ssi", $eventName, $eventDateTime, $eventId);
 
 
-        //user and password to send emails
-        $env = parse_ini_file('../.env');
-        $SMTP_USER = $env['SMTP_USER'];
-        $SMTP_PASS = $env['SMTP_PASS'];
+
 
         if ($stmt->execute()) {
             //send emails
-            $eventAttendees = explode(',', $eventAttendees);
-            foreach ($eventAttendees as $attendeeEmail) {
-                $mail = new PHPMailer(true);
-                $mail->SMTPDebug = 2;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->Username = $SMTP_USER;
-                $mail->Password =  $SMTP_PASS;
-                $mail->SMTPAuth = true;
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-                $mail->setFrom('from@example.com', 'Mailer');
-                $mail->addAddress($attendeeEmail);
-                $mail->Subject = 'Evento Modificato!';
-                $message = "L'evento $eventName è stato appena modificato. Ti aspettiamo il giorno $eventDateTime";
-                $mail->Body    = $message;
-                $mail->send();
-            }
+            $subject = "Evento modificato";
+            $message = "L'evento $eventName è stato appena modificato. Ti aspettiamo il giorno $eventDateTime";
+            //send emails
+            EventController::sendMail($subject, $message, $eventAttendees);
             return true;
         } else {
             return false;
         }
     }
-
 
     public function deleteEvent($eventId)
     {
@@ -170,6 +133,31 @@ class EventController
             return true;
         } else {
             return false;
+        }
+    }
+
+    private static function sendMail($subject, $message, $eventAttendees)
+    {
+        //user and password to send emails
+        $env = parse_ini_file('../.env');
+        $SMTP_USER = $env['SMTP_USER'];
+        $SMTP_PASS = $env['SMTP_PASS'];
+        $eventAttendees = explode(',', $eventAttendees);
+        foreach ($eventAttendees as $attendeeEmail) {
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 2;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Username = $SMTP_USER;
+            $mail->Password =  $SMTP_PASS;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+            $mail->setFrom('from@example.com', 'Mailer');
+            $mail->addAddress($attendeeEmail);
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->send();
         }
     }
 }

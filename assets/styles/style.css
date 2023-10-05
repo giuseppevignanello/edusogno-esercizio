@@ -22,7 +22,6 @@ body {
 /* #endregion general */
 
 /* #region utilities */
-/* todo: create a root */
 .d_none {
   display: none;
 }
@@ -252,6 +251,7 @@ body {
 }
 /* #endregion modal */
 
+/* #region mobile */
 @media screen and (max-width: 540px) {
   .flex_sm_events {
     flex-direction: column;
@@ -261,3 +261,5 @@ body {
     width: 50%;
   }
 }
+
+/* #endregion mobile */

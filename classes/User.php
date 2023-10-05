@@ -26,13 +26,12 @@ class User
         $result = $stmt->get_result();
 
         //if there are not result
+        //TODO: usign specific function
         if ($result->num_rows === 0) {
             return "email_not_found";
         }
 
         $user_data = $result->fetch_assoc();
-        var_dump($this->password);
-        var_dump($user_data['password']);
 
         //check the password
         // If the password had been hashed I would have used password_verify 
