@@ -18,13 +18,12 @@ include "../partials/header.php";
     <div class="box bg_white">
         <form id="formLogin" action="../auth/login_auth.php" method="post" class="d_flex flex_column px_2">
             <label class=" text_bold label" for="email_login">Inserisci l'e-mail</label>
-            <input class="input" type="mail" id="email_login" name="email_login" placeholder="name@example.com "
-                required>
+            <input class="input" type="mail" id="email_login" name="email_login" placeholder="name@example.com ">
             <span class="error_message d_none" id="email_login_error">Mail non valida</span>
             <label class="text_bold label" for="password_login">Inserisci la password</label>
             <div class="password_container d_flex align_items_center">
                 <input class="input" type="password" id="password_login" name="password_login"
-                    placeholder="Scrivila qui" required>
+                    placeholder="Scrivila qui">
                 <span class="password_toggle_icon" id="toggle_password"><i class="fa-solid fa-eye"></i></span>
             </div>
             <span class="error_message d_none" id="password_login_error">Password non valida</span>
@@ -38,7 +37,7 @@ include "../partials/header.php";
 
 <script src="../assets/js/messageScript.js"></script>
 <script src="../assets/js/passwordToggle.js"></script>
-<script src="../assets/js/loginValidation.js"></script>
+<!-- <script src="../assets/js/loginValidation.js"></script> -->
 </body>
 
 </html>
